@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Test Extension Options</title>
+  <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="./css/bootstrap-table.min.css" rel="stylesheet" type="text/css" />
+  <style>
+      .remove {
+          color: red;
+          margin-left: 5px;
+      }
+  </style>
+</head>
+
+<body>
+<br>
+
+  <div id="content" class="container-fluid">
+
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a data-toggle="tab" href="#agregar">Agregar</a></li>
+      <li role="presentation"><a data-toggle="tab" id="radiostab" href="#radios">Radios</a></li>
+    </ul>
+
+    <div class="tab-content">
+
+      <div id="agregar" class="tab-pane fade in active">
+        <br>
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="T&iacute;tulo" id="title" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Frecuencia" id="freq" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="SRC1" id="src1" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="SRC2" id="src2" required>
+          </div>
+          <button type="submit" class="btn btn-default btn-xs" id="save">Guardar</button>
+        </form>
+        <br>
+      </div>
+
+      <div id="radios" class="tab-pane fade in" data-sort-name="title" data-sort-order="desc">
+        <br>
+        <table id="columns" data-detail-view="true"
+                            data-detail-formatter="detailFormatter">
+          <thead>
+            <tr>
+              <th data-field="title" data-sortable="true">T&iacute;tulo</th>
+              <th data-field="freq" data-sortable="true">Frec</th>
+              <th data-field="action"
+              data-align="center"
+              data-formatter="actionFormatter"
+              data-events="actionEvents"
+              ></th>
+            </tr>
+          </thead>
+        </table>
+        <br>
+        <p class="text-right">
+        <small>
+          <a class="text-danger" style="cursor: not-allowed;" id="restore_default">Restaurar valores por defecto</a>
+        </small>
+      </p>
+      </div>
+
+    </div>
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/bootstrap-table.min.js"></script>
+
+<script src="./js/options.js"></script>
+
+</body>
+</html>
