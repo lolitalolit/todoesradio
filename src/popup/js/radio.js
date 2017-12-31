@@ -34,17 +34,17 @@ var stationDiv = function(id) {
   return station;
 };
 
-var stations = [];
-
 window.onload = function() {
-
   chrome.storage.sync.get(function(items) {
-    stations = items.stations;
-    buildDom(items.stations);
+    var stations = items.stations;
+    if (isEmpty(stations)) {
+      stations = stationsDefault;
+    }
+
+    buildDom(stations);
 
     chrome.runtime.getBackgroundPage(function(bg) {
-      console.log(bg)
-      var radio = new Radio(items.stations, bg);
+      var radio = new Radio(stations, bg);
       radio.updateUi();
     });
   });
@@ -66,12 +66,12 @@ var Radio = function(st, bg) {
   this.init(st, bg);
 };
 
-function sleep(millis)
-{
-    var date = new Date();
-    var curDate = null;
-    do { curDate = new Date(); }
-    while(curDate-date < millis);
+function sleep(millis) {
+  var date = new Date();
+  var curDate = null;
+  do {
+    curDate = new Date();
+  } while (curDate - date < millis);
 }
 
 Radio.prototype = {
@@ -98,10 +98,10 @@ Radio.prototype = {
     }
 
     var reload = document.getElementById("reload");
-    reload.addEventListener("click", function(){
+    reload.addEventListener("click", function() {
       chrome.runtime.reload();
     });
-    
+
     self.updateUi();
   },
 
@@ -174,5 +174,4 @@ Radio.prototype = {
       chrome.browserAction.setBadgeText({ text: "" });
     }
   }
-
 };

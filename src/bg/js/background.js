@@ -15,7 +15,7 @@ bgController.prototype = {
   station: null,
   id: null,
   m3u8: false,
-  format: 'webm',
+  format: "webm",
   data: null,
 
   init: function() {},
@@ -48,7 +48,7 @@ bgController.prototype = {
 
         hls.on(Hls.Events.MANIFEST_PARSED, function() {
           video.play();
-          self.id = 'm3u8';
+          self.id = "m3u8";
           self.radio = hls;
           self.station = self.data;
 
@@ -142,5 +142,4 @@ bgController.prototype = {
       self.format = "m4a";
     }
   }
-
 };
