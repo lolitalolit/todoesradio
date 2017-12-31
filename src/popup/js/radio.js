@@ -116,10 +116,11 @@ Radio.prototype = {
 
   updateUi: function() {
     var self = this;
+    console.log(self.bg.radio)
     for (var i = 0; i < self.stations.length; i++) {
       if (
         self.bg.radio.station &&
-        stations[i].title === self.bg.radio.station.title
+        self.stations[i].title === self.bg.radio.station.title
       ) {
         self.rowHighlight(i, true);
         self.showLive(i, true);
